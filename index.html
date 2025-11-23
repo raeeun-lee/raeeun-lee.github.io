@@ -3,17 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Doeun Kim</title>
-    <meta name="description" content="Doeun Kim — Data scientist exploring Security & Privacy, HCI, and STS." />
+    <title>RaeEun Lee</title>
+    <meta name="description" content="RaeEun Lee — Data scientist exploring Security & Privacy, HCI, and STS." />
 
     <style>
       :root {
-        --bg: #0b0c0f;
-        --fg: #e5e7eb;
-        --muted: #9ca3af;
-        --accent: #ffffff;
-        --border: #1f2937;
-        --link: #f9fafb;
+        /* DEFAULT = LIGHT THEME */
+        --bg: #ffffff;
+        --fg: #111111;
+        --muted: #555555;
+        --accent: #000000;
+        --border: #dddddd;
+        --link: #000000;
+        --card: #ffffff;
       }
       * { box-sizing: border-box; }
       body {
@@ -98,6 +100,49 @@
         border-radius: 10px;
         border: 1px solid var(--border);
       }
+      .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 32px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .nav-title {
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .site-nav {
+        display: flex;
+        gap: 16px;
+      }
+      .site-nav a {
+        border-bottom: none;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .site-nav a:hover {
+        color: var(--link);
+      }
+      .back-to-top {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        width: 40px;
+        height: 40px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: #050608;
+        color: var(--fg);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 18px;
+      }
+      .back-to-top.visible {
+        display: flex;
+      }
       .cv-embed {
         width: 100%;
         height: 900px;
@@ -111,10 +156,54 @@
         color: var(--muted);
         font-size: 14px;
       }
-    </style>
+          .theme-toggle {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--card);
+        color: var(--fg);
+        border: 1px solid var(--border);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        padding: 0;
+      }
+
+      .theme-toggle:hover {
+        opacity: 0.85;
+      }
+
+      :root.dark {
+        --bg: #0b0c0f;
+        --fg: #e5e7eb;
+        --muted: #9ca3af;
+        --accent: #ffffff;
+        --border: #1f2937;
+        --link: #ffffff;
+        --card: #050608;
+      }
+
+      :root.dark body {
+        background: var(--bg);
+        color: var(--fg);
+      }
+</style>
   </head>
   <body>
     <div class="container">
+      <header class="site-header">
+        <div class="nav-title">DOEUN KIM</div>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="#bio">Biography</a>
+          <a href="#cv">CV</a>
+          <a href="#hobbies">Hobbies</a>
+          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">◐</button>
+        </nav>
+      </header>
+
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">◐</button>
       <img src="photo.jpg" alt="Portrait of Doeun Kim" class="photo" />
       <h1>Doeun Kim</h1>
       <p>Data scientist interested in <strong>Security &amp; Privacy</strong>, <strong>Human–Computer Interaction</strong>, and <strong>Science &amp; Technology Studies</strong>.</p>
@@ -157,8 +246,42 @@
       </footer>
     </div>
 
+    <button class="back-to-top" type="button" aria-label="Back to top">↑</button>
+
     <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
+      const yearEl = document.getElementById('year');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+
+      const backToTop = document.querySelector('.back-to-top');
+      // Theme toggle
+      const root = document.documentElement;
+      const themeToggle = document.getElementById('theme-toggle');
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') root.classList.add('dark');
+
+      themeToggle.addEventListener('click', () => {
+        root.classList.toggle('dark');
+        const current = root.classList.contains('dark') ? 'dark' : 'light';
+        localStorage.setItem('theme', current);
+      });('theme', current);
+      });
+
+      window.addEventListener('scroll', () => {
+        if (!backToTop) return;
+        if (window.scrollY > 200) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      });
+
+      if (backToTop) {
+        backToTop.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
     </script>
   </body>
 </html>
