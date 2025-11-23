@@ -6,163 +6,109 @@
     <title>Doeun Kim</title>
     <meta name="description" content="Doeun Kim — Data scientist exploring Security & Privacy, HCI, and STS." />
 
-    <!-- Social cards -->
-    <meta property="og:title" content="Doeun Kim" />
-    <meta property="og:description" content="Data scientist exploring Security & Privacy, HCI, and STS." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="photo.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
-
     <style>
       :root {
-        --bg: #fafafa;
-        --fg: #111;
-        --muted: #6b7280; /* slate-500 */
-        --card: #ffffff;
-        --border: #e5e7eb; /* gray-200 */
-        --accent: #111827; /* gray-900 */
-        --link: #111827;
-      }
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #0b0c0f;
-          --fg: #e5e7eb;
-          --muted: #9ca3af;
-          --card: #0f1218;
-          --border: #1f2937;
-          --accent: #f3f4f6;
-          --link: #f3f4f6;
-        }
+        --bg: #0b0c0f;
+        --fg: #e5e7eb;
+        --muted: #9ca3af;
+        --accent: #ffffff;
+        --border: #1f2937;
+        --link: #ffffff;
       }
       * { box-sizing: border-box; }
-      html, body { height: 100%; }
       body {
-        margin: 0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
-        color: var(--fg); background: radial-gradient(1000px 600px at 70% -10%, rgba(17,24,39,.08), transparent), var(--bg);
+        margin: 0;
+        font: 16px/1.6 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        color: var(--fg);
+        background: var(--bg);
       }
-      a { color: var(--link); text-underline-offset: 3px; }
-      .container { max-width: 920px; margin: 0 auto; padding: 40px 20px 80px; }
-      header { position: sticky; top: 0; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg) 70%, transparent); border-bottom: 1px solid var(--border); }
-      .header-inner { max-width: 920px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
-      .name { font-weight: 700; letter-spacing: 0.2px; }
-      .links a { margin-left: 14px; opacity: .9; }
-      main { display: grid; grid-template-columns: 1.2fr .8fr; gap: 32px; margin-top: 36px; }
-      @media (max-width: 860px) { main { grid-template-columns: 1fr; } }
-
-      .hero { padding-top: 8px; }
-      .hero h1 { font-size: clamp(32px, 5vw, 44px); line-height: 1.15; margin: 0 0 10px; letter-spacing: -0.02em; }
-      .hero .subtitle { color: var(--muted); margin: 0 0 18px; }
-      .pill { display: inline-flex; gap: 10px; align-items: center; padding: 8px 12px; border: 1px solid var(--border); background: var(--card); border-radius: 999px; font-size: 14px; }
-      .pill .dot { width: 8px; height: 8px; border-radius: 999px; background: #22c55e; box-shadow: 0 0 0 3px color-mix(in oklab, #22c55e 20%, transparent); }
-
-      .photo { border-radius: 16px; width: 100%; aspect-ratio: 4/5; object-fit: cover; border: 1px solid var(--border); background: color-mix(in oklab, var(--card), transparent); box-shadow: 0 6px 24px rgba(0,0,0,.08); }
-      .card { border: 1px solid var(--border); background: var(--card); border-radius: 16px; padding: 18px 20px; }
-      section { margin-top: 28px; }
-      h2 { font-size: 18px; margin: 0 0 8px; letter-spacing: .2px; text-transform: uppercase; color: var(--accent); }
-      p { margin: 0 0 10px; }
-      ul { margin: 0; padding: 0; list-style: none; }
-      li + li { margin-top: 14px; }
-      .cv-list li { display: grid; grid-template-columns: 120px 1fr; gap: 16px; }
-      .cv-when { color: var(--muted); white-space: nowrap; }
-      .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); font-size: 12px; color: var(--muted); }
-      .split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-      @media (max-width: 560px){ .cv-list li { grid-template-columns: 1fr; } .split { grid-template-columns: 1fr; } }
-      .footer { margin-top: 48px; color: var(--muted); font-size: 14px; }
-      .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--card); text-decoration: none; }
-      .btn:hover { transform: translateY(-1px); }
+      .container {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 80px 20px 60px;
+      }
+      h1 {
+        font-size: clamp(36px, 6vw, 56px);
+        margin: 0 0 12px;
+        letter-spacing: -0.02em;
+        color: var(--accent);
+      }
+      p {
+        margin: 0 0 16px;
+        color: var(--muted);
+      }
+      a {
+        color: var(--link);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+      a:hover {
+        border-bottom-color: var(--link);
+      }
+      .photo {
+        display: block;
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 28px;
+        border: 2px solid var(--border);
+      }
+      .section {
+        margin-top: 60px;
+      }
+      h2 {
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+        margin-bottom: 12px;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      li + li {
+        margin-top: 10px;
+      }
+      footer {
+        margin-top: 80px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+      }
     </style>
   </head>
   <body>
-    <header>
-      <div class="header-inner">
-        <div class="name">Doeun Kim</div>
-        <nav class="links" aria-label="quick links">
-          <a href="#cv">CV</a>
-          <a href="#bio">Bio</a>
-          <a href="mailto:doeun@example.com" aria-label="Email">Email</a>
-          <a href="https://github.com/yourname" target="_blank" rel="noreferrer">GitHub</a>
-        </nav>
-      </div>
-    </header>
-
     <div class="container">
-      <main>
-        <!-- Left column: intro + CV -->
-        <div>
-          <section class="hero">
-            <span class="pill" title="Open to research collaborations"><span class="dot"></span> Open to collaborations</span>
-            <h1>Data Scientist → S&amp;P‑minded Researcher</h1>
-            <p class="subtitle">I build and study trustworthy online‑safety pipelines under privacy constraints. Interests: Security &amp; Privacy, HCI, STS.</p>
-            <div class="split">
-              <a class="btn" href="cv.pdf" download>
-                <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Download CV (PDF)
-              </a>
-              <a class="btn" href="mailto:doeun@example.com">
-                <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 4 8 8 8-8"/><path d="M22 6.5V18a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6.5l10 7 10-7Z"/></svg>
-                Get in touch
-              </a>
-            </div>
-          </section>
+      <img src="photo.jpg" alt="Doeun Kim portrait" class="photo" />
+      <h1>Doeun Kim</h1>
+      <p>Data Scientist interested in <strong>Security &amp; Privacy</strong>, <strong>Human–Computer Interaction</strong>, and <strong>Science &amp; Technology Studies</strong>.</p>
+      <p>I build and study trustworthy online-safety pipelines under privacy constraints.</p>
 
-          <section id="cv" aria-labelledby="cv-title">
-            <h2 id="cv-title">CV</h2>
-            <ul class="cv-list">
-              <li>
-                <div class="cv-when">2021–2025</div>
-                <div>
-                  <strong>Senior Data Scientist</strong>, Kakao — Recommender systems, large‑scale analytics, trustworthy pipelines.
-                  <div class="badge">Industry</div>
-                </div>
-              </li>
-              <li>
-                <div class="cv-when">2019–2021</div>
-                <div>
-                  <strong>M.S., Applied Statistics</strong>, Korea — Thesis: XXXXXXXXX.
-                  <div class="badge">Education</div>
-                </div>
-              </li>
-              <li>
-                <div class="cv-when">2015–2019</div>
-                <div>
-                  <strong>B.S., Applied Statistics</strong>, Korea — Minor in Computer Science & Cultural Criticism.
-                  <div class="badge">Education</div>
-                </div>
-              </li>
-            </ul>
-          </section>
-        </div>
+      <div class="section" id="cv">
+        <h2>CV</h2>
+        <ul>
+          <li><strong>2021–2025</strong> · Senior Data Scientist at Kakao — Recommender systems, large-scale analytics.</li>
+          <li><strong>2019–2021</strong> · M.S. in Applied Statistics, Korea University.</li>
+          <li><strong>2015–2019</strong> · B.S. in Applied Statistics, Korea University (Minor in Computer Science & Cultural Criticism).</li>
+        </ul>
+        <p><a href="cv.pdf" download>Download CV →</a></p>
+      </div>
 
-        <!-- Right column: photo + bio -->
-        <aside>
-          <img class="photo" src="photo.jpg" alt="Portrait of Doeun Kim" />
-          <section id="bio" aria-labelledby="bio-title" class="card">
-            <h2 id="bio-title">Biography</h2>
-            <p>안녕하세요! 저는 대규모 추천 시스템과 사용자 행동 데이터를 바탕으로 제품을 개선해 온 데이터 사이언티스트입니다. 최근에는 <em>프라이버시 제약 환경에서도 신뢰성 있게 작동하는 온라인 안전성 분석</em>에 관심을 갖고, S&amp;P/HCI/STS 교차 영역의 연구를 준비하고 있습니다.</p>
-            <p>현재 관심 주제는 (1) 유해 행위의 조기 탐지를 위한 프라이버시 보존 데이터 아키텍처, (2) 정량적 보안·프라이버시 측정, (3) 인간 중심의 플랫폼 거버넌스입니다.</p>
-          </section>
+      <div class="section" id="bio">
+        <h2>Biography</h2>
+        <p>안녕하세요! 저는 대규모 추천 시스템과 사용자 행동 데이터를 바탕으로 제품을 개선해 온 데이터 사이언티스트입니다. 최근에는 <em>프라이버시 제약 환경에서도 신뢰성 있게 작동하는 온라인 안전성 분석</em>에 관심을 갖고, S&amp;P/HCI/STS 교차 영역의 연구를 준비하고 있습니다.</p>
+      </div>
 
-          <section class="card">
-            <h2>Selected Links</h2>
-            <ul>
-              <li><a href="https://scholar.google.com/" target="_blank" rel="noreferrer">Google Scholar</a></li>
-              <li><a href="https://github.com/yourname" target="_blank" rel="noreferrer">GitHub</a></li>
-              <li><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a></li>
-            </ul>
-          </section>
-        </aside>
-      </main>
-
-      <footer class="footer">
-        © <span id="y"></span> Doeun Kim · Built with plain HTML/CSS. View source on <a href="https://github.com/yourname/yourname.github.io" target="_blank" rel="noreferrer">GitHub Pages</a>.
+      <footer>
+        © <span id="year"></span> Doeun Kim · Built with HTML &amp; CSS · <a href="https://github.com/yourname/yourname.github.io" target="_blank">GitHub</a>
       </footer>
     </div>
 
     <script>
-      // update year
-      document.getElementById('y').textContent = new Date().getFullYear();
+      document.getElementById('year').textContent = new Date().getFullYear();
     </script>
   </body>
 </html>
