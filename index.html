@@ -100,6 +100,37 @@
         border-radius: 10px;
         border: 1px solid var(--border);
       }
+      .gallery-slider {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        scroll-snap-type: x mandatory;
+      }
+      .gallery-slider::-webkit-scrollbar {
+        height: 6px;
+      }
+      .gallery-slider::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 999px;
+      }
+      .gallery-slider img {
+        width: 220px;
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+      }
+      .gallery-item {
+        margin: 0;
+      }
+      .gallery-item figcaption {
+        margin-top: 6px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .gallery-placeholder {
+        color: var(--muted);
+        margin: 0;
+      }
       .site-header {
         display: flex;
         align-items: center;
@@ -132,16 +163,21 @@
         height: 40px;
         border-radius: 999px;
         border: 1px solid var(--border);
-        background: #050608;
+        background: var(--card);
         color: var(--fg);
         display: none;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         font-size: 18px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
       }
       .back-to-top.visible {
         display: flex;
+      }
+      :root.dark .back-to-top {
+        box-shadow: 0 6px 24px rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.2);
       }
       .cv-embed {
         width: 100%;
@@ -203,7 +239,6 @@
         </nav>
       </header>
 
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">◐</button>
       <img src="photo.jpg" alt="Portrait of Doeun Kim" class="photo" />
       <h1>Doeun Kim</h1>
       <p>Data scientist interested in <strong>Security &amp; Privacy</strong>, <strong>Human–Computer Interaction</strong>, and <strong>Science &amp; Technology Studies</strong>.</p>
@@ -225,22 +260,10 @@
       <div class="section" id="hobbies">
         <h2>Hobbies</h2>
         <p>In my free time, I enjoy baking, visiting cafés, and exploring quiet walking paths.</p>
-        <div class="gallery">
-          <img src="hobbies/bread.jpg" alt="Loaf of naturally fermented bread on a wooden table" />
-          <img src="hobbies/cafe.jpg" alt="Cozy café interior with a cup of coffee" />
-          <img src="hobbies/walk.jpg" alt="Tree-lined path I like to walk on" />
+        <div id="hobby-gallery" class="gallery gallery-slider" aria-live="polite">
+          <p class="gallery-placeholder">Loading photos…</p>
         </div>
       </div>
-
-        <h2>Hobbies</h2>
-        <p>In my free time, I enjoy baking, visiting cafés, and exploring quiet walking paths.</p>
-        <div class="gallery">
-          <img src="hobbies/bread.jpg" alt="Loaf of naturally fermented bread on a wooden table" />
-          <img src="hobbies/cafe.jpg" alt="Cozy café interior with a cup of coffee" />
-          <img src="hobbies/walk.jpg" alt="Tree-lined path I like to walk on" />
-        </div>
-      </div>
-
       <footer>
         © <span id="year"></span> Doeun Kim · Built with HTML &amp; CSS · <a href="https://github.com/yourname/yourname.github.io" target="_blank">GitHub</a>
       </footer>
@@ -255,18 +278,25 @@
       }
 
       const backToTop = document.querySelector('.back-to-top');
-      // Theme toggle
       const root = document.documentElement;
       const themeToggle = document.getElementById('theme-toggle');
       const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') root.classList.add('dark');
+      if (savedTheme === 'dark') {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+        if (!savedTheme) {
+          localStorage.setItem('theme', 'light');
+        }
+      }
 
-      themeToggle.addEventListener('click', () => {
-        root.classList.toggle('dark');
-        const current = root.classList.contains('dark') ? 'dark' : 'light';
-        localStorage.setItem('theme', current);
-      });('theme', current);
-      });
+      if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+          root.classList.toggle('dark');
+          const current = root.classList.contains('dark') ? 'dark' : 'light';
+          localStorage.setItem('theme', current);
+        });
+      }
 
       window.addEventListener('scroll', () => {
         if (!backToTop) return;
@@ -282,6 +312,67 @@
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
+
+      const hobbyGallery = document.getElementById('hobby-gallery');
+      const githubMediaConfig = {
+        owner: 'raeeun-lee',
+        repo: 'raeeun-lee.github.io',
+        branch: 'frame',
+        folder: 'hobbies',
+      };
+      const fallbackImages = [
+        { src: 'hobbies/bread.jpg', alt: 'Naturally fermented bread on a wooden table' },
+        { src: 'hobbies/cafe.jpg', alt: 'Cozy café interior with a cup of coffee' },
+        { src: 'hobbies/walk.jpg', alt: 'Tree-lined path for an afternoon walk' },
+      ];
+
+      async function loadHobbyGallery() {
+        if (!hobbyGallery) return;
+        try {
+          const apiUrl = `https://api.github.com/repos/${githubMediaConfig.owner}/${githubMediaConfig.repo}/contents/${githubMediaConfig.folder}?ref=${githubMediaConfig.branch}`;
+          const response = await fetch(apiUrl, {
+            headers: { Accept: 'application/vnd.github+json' },
+          });
+          if (!response.ok) throw new Error('GitHub API request failed');
+          const items = await response.json();
+          const images = items
+            .filter((item) => item.type === 'file' && /\.(png|jpe?g|gif|webp|avif)$/i.test(item.name))
+            .map((item) => ({
+              src: item.download_url,
+              alt: item.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' '),
+            }));
+          if (!images.length) throw new Error('No hobby images were found in the folder');
+          renderHobbyGallery(images);
+        } catch (error) {
+          console.warn('Falling back to static hobby list', error);
+          renderHobbyGallery(fallbackImages);
+        }
+      }
+
+      function renderHobbyGallery(images) {
+        if (!hobbyGallery) return;
+        hobbyGallery.innerHTML = '';
+        if (!images.length) {
+          hobbyGallery.innerHTML = '<p class="gallery-placeholder">표시할 사진이 없습니다.</p>';
+          return;
+        }
+        images.forEach(({ src, alt }) => {
+          const figure = document.createElement('figure');
+          figure.className = 'gallery-item';
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = alt || 'Hobby photo';
+          figure.appendChild(img);
+          if (alt) {
+            const caption = document.createElement('figcaption');
+            caption.textContent = alt;
+            figure.appendChild(caption);
+          }
+          hobbyGallery.appendChild(figure);
+        });
+      }
+
+      loadHobbyGallery();
     </script>
   </body>
 </html>
