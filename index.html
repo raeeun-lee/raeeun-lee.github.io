@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>RaeEun Lee</title>
-    <meta name="description" content="RaeEun Lee — Data scientist exploring Security & Privacy, HCI, and STS." />
+    <title>Doeun Kim</title>
+    <meta name="description" content="Doeun Kim — Data scientist exploring Security & Privacy, HCI, and STS." />
 
     <style>
       :root {
@@ -17,163 +17,6 @@
         --link: #000000;
         --card: #ffffff;
       }
-      * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        color: var(--fg);
-        background: var(--bg);
-      }
-      .container {
-        max-width: 760px;
-        margin: 0 auto;
-        padding: 80px 20px 60px;
-      }
-      h1 {
-        font-size: clamp(36px, 6vw, 56px);
-        margin: 0 0 12px;
-        letter-spacing: -0.02em;
-        color: var(--accent);
-      }
-      p {
-        margin: 0 0 16px;
-        color: var(--muted);
-      }
-      a {
-        color: var(--link);
-        text-decoration: none;
-        border-bottom: 1px solid transparent;
-      }
-      a:hover {
-        border-bottom-color: var(--link);
-      }
-      .photo {
-        display: block;
-        width: 160px;
-        height: 160px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin: 0 auto 28px;
-        border: 2px solid var(--border);
-      }
-      .section {
-        margin-top: 52px;
-      }
-      h2 {
-        font-size: 18px;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--accent);
-        margin: 0 0 12px;
-      }
-      h3 {
-        font-size: 15px;
-        margin: 18px 0 6px;
-        color: var(--fg);
-      }
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-      li + li {
-        margin-top: 10px;
-      }
-      .cv-item-title {
-        font-weight: 600;
-        color: var(--fg);
-      }
-      .cv-meta {
-        font-size: 14px;
-        color: var(--muted);
-      }
-      .gallery {
-        margin-top: 10px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 12px;
-      }
-      .gallery img {
-        width: 100%;
-        aspect-ratio: 4/3;
-        object-fit: cover;
-        border-radius: 10px;
-        border: 1px solid var(--border);
-      }
-      .site-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 32px;
-        font-size: 14px;
-        color: var(--muted);
-      }
-      .nav-title {
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-      .site-nav {
-        display: flex;
-        gap: 16px;
-      }
-      .site-nav a {
-        border-bottom: none;
-        font-size: 14px;
-        color: var(--muted);
-      }
-      .site-nav a:hover {
-        color: var(--link);
-      }
-      .back-to-top {
-        position: fixed;
-        right: 24px;
-        bottom: 24px;
-        width: 40px;
-        height: 40px;
-        border-radius: 999px;
-        border: 1px solid var(--border);
-        background: #050608;
-        color: var(--fg);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 18px;
-      }
-      .back-to-top.visible {
-        display: flex;
-      }
-      .cv-embed {
-        width: 100%;
-        height: 900px;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        background: #050608;
-      }
-      footer {
-        margin-top: 80px;
-        text-align: center;
-        color: var(--muted);
-        font-size: 14px;
-      }
-          .theme-toggle {
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        background: var(--card);
-        color: var(--fg);
-        border: 1px solid var(--border);
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 14px;
-        padding: 0;
-      }
-
-      .theme-toggle:hover {
-        opacity: 0.85;
-      }
 
       :root.dark {
         --bg: #0b0c0f;
@@ -185,103 +28,215 @@
         --card: #050608;
       }
 
-      :root.dark body {
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         background: var(--bg);
         color: var(--fg);
       }
-</style>
+
+      .container {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 80px 20px 60px;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(6px);
+        background: color-mix(in oklab, var(--bg) 85%, transparent);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 32px;
+        padding: 12px 0;
+      }
+
+      .nav-title {
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      .site-nav {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .site-nav a {
+        font-size: 14px;
+        color: var(--muted);
+        text-decoration: none;
+      }
+
+      .site-nav a:hover {
+        color: var(--link);
+      }
+
+      .theme-toggle {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--card);
+        color: var(--fg);
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      h1 {
+        font-size: clamp(36px, 6vw, 56px);
+        margin: 0 0 12px;
+        letter-spacing: -0.02em;
+        color: var(--accent);
+      }
+
+      p {
+        margin: 0 0 16px;
+        color: var(--muted);
+      }
+
+      .photo {
+        display: block;
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 28px;
+        border: 2px solid var(--border);
+      }
+
+      .section { margin-top: 52px; }
+
+      h2 {
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+        margin-bottom: 12px;
+      }
+
+      h3 {
+        font-size: 15px;
+        margin: 18px 0 6px;
+        color: var(--fg);
+      }
+
+      ul { list-style: none; padding: 0; margin: 0; }
+      li + li { margin-top: 10px; }
+
+      .cv-item-title { font-weight: 600; color: var(--fg); }
+      .cv-meta { font-size: 14px; color: var(--muted); }
+
+      .gallery {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
+      }
+
+      .gallery img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+      }
+
+      .cv-embed {
+        width: 100%;
+        height: 900px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--card);
+      }
+
+      .back-to-top {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        width: 40px;
+        height: 40px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: var(--fg);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 18px;
+      }
+
+      .back-to-top.visible { display: flex; }
+
+      footer {
+        margin-top: 80px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+      }
+    </style>
   </head>
-  <body>
-    <div class="container">
-      <header class="site-header">
-        <div class="nav-title">DOEUN KIM</div>
-        <nav class="site-nav" aria-label="Main navigation">
-          <a href="#bio">Biography</a>
-          <a href="#cv">CV</a>
-          <a href="#hobbies">Hobbies</a>
-          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">◐</button>
-        </nav>
-      </header>
+<body>
+  <div class="container">
 
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">◐</button>
-      <img src="photo.jpg" alt="Portrait of Doeun Kim" class="photo" />
-      <h1>Doeun Kim</h1>
-      <p>Data scientist interested in <strong>Security &amp; Privacy</strong>, <strong>Human–Computer Interaction</strong>, and <strong>Science &amp; Technology Studies</strong>.</p>
-      <p>I build and study trustworthy online-safety pipelines under privacy constraints.</p>
+    <header class="site-header">
+      <div class="nav-title">DOEUN KIM</div>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#bio">Biography</a>
+        <a href="#cv">CV</a>
+        <a href="#hobbies">Hobbies</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+      </nav>
+    </header>
 
-      <div class="section" id="bio">
-        <h2>Biography</h2>
-        <p>안녕하세요! 저는 대규모 추천 시스템과 사용자 행동 데이터를 바탕으로 제품을 개선해 온 데이터 사이언티스트입니다. 최근에는 <em>프라이버시 제약 환경에서도 신뢰성 있게 작동하는 온라인 안전성 분석</em>에 관심을 갖고, S&amp;P/HCI/STS 교차 영역의 연구를 준비하고 있습니다.</p>
-      </div>
+    <img src="photo.jpg" alt="Portrait of Doeun Kim" class="photo" />
+    <h1>Doeun Kim</h1>
+    <p>Data scientist interested in <strong>Security &amp; Privacy</strong>, <strong>Human–Computer Interaction</strong>, and <strong>Science &amp; Technology Studies</strong>.</p>
+    <p>I build and study trustworthy online-safety pipelines under privacy constraints.</p>
 
-      <div class="section" id="cv">
-        <h2>CV</h2>
-        <p style="margin-bottom: 12px;">You can view my full CV below. For best quality, open it in a new tab using your browser's PDF controls.</p>
-        <object data="cv.pdf#view=FitH" type="application/pdf" class="cv-embed">
-          <p>PDF preview is not available in this browser. You can <a href="cv.pdf">download the CV here</a>.</p>
-        </object>
-      </div>
-
-      <div class="section" id="hobbies">
-        <h2>Hobbies</h2>
-        <p>In my free time, I enjoy baking, visiting cafés, and exploring quiet walking paths.</p>
-        <div class="gallery">
-          <img src="hobbies/bread.jpg" alt="Loaf of naturally fermented bread on a wooden table" />
-          <img src="hobbies/cafe.jpg" alt="Cozy café interior with a cup of coffee" />
-          <img src="hobbies/walk.jpg" alt="Tree-lined path I like to walk on" />
-        </div>
-      </div>
-
-        <h2>Hobbies</h2>
-        <p>In my free time, I enjoy baking, visiting cafés, and exploring quiet walking paths.</p>
-        <div class="gallery">
-          <img src="hobbies/bread.jpg" alt="Loaf of naturally fermented bread on a wooden table" />
-          <img src="hobbies/cafe.jpg" alt="Cozy café interior with a cup of coffee" />
-          <img src="hobbies/walk.jpg" alt="Tree-lined path I like to walk on" />
-        </div>
-      </div>
-
-      <footer>
-        © <span id="year"></span> Doeun Kim · Built with HTML &amp; CSS · <a href="https://github.com/yourname/yourname.github.io" target="_blank">GitHub</a>
-      </footer>
+    <div class="section" id="bio">
+      <h2>Biography</h2>
+      <p>안녕하세요! 저는 대규모 추천 시스템과 사용자 행동 데이터를 바탕으로 제품을 개선해 온 데이터 사이언티스트입니다. 최근에는 <em>프라이버시 제약 환경에서도 신뢰성 있게 작동하는 온라인 안전성 분석</em>에 관심을 갖고, S&amp;P/HCI/STS 교차 영역의 연구를 준비하고 있습니다.</p>
     </div>
 
-    <button class="back-to-top" type="button" aria-label="Back to top">↑</button>
+    <div class="section" id="cv">
+      <h2>CV</h2>
+      <p style="margin-bottom: 12px;">You can view my full CV below. For best quality, open it in a new tab using your browser's PDF controls.</p>
+      <object data="cv.pdf#view=FitH" type="application/pdf" class="cv-embed">
+        <p>PDF preview is not available. <a href="cv.pdf">Download CV</a>.</p>
+      </object>
+    </div>
 
-    <script>
-      const yearEl = document.getElementById('year');
-      if (yearEl) {
-        yearEl.textContent = new Date().getFullYear();
-      }
+    <div class="section" id="hobbies">
+      <h2>Hobbies</h2>
+      <p>In my free time, I enjoy baking, visiting cafés, and exploring quiet walking paths.</p>
+      <div class="gallery">
+        <img src="hobbies/bread.jpg" alt="Loaf of naturally fermented bread" />
+        <img src="hobbies/cafe.jpg" alt="Cozy cafe interior" />
+        <img src="hobbies/walk.jpg" alt="Favorite walking path" />
+      </div>
+    </div>
 
-      const backToTop = document.querySelector('.back-to-top');
-      // Theme toggle
-      const root = document.documentElement;
-      const themeToggle = document.getElementById('theme-toggle');
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') root.classList.add('dark');
+    <footer>
+      © <span id="year"></span> Doeun Kim · Built with HTML &amp; CSS · <a href="https://github.com/yourname/yourname.github.io" target="_blank">GitHub</a>
+    </footer>
+  </div>
 
-      themeToggle.addEventListener('click', () => {
-        root.classList.toggle('dark');
-        const current = root.classList.contains('dark') ? 'dark' : 'light';
-        localStorage.setItem('theme', current);
-      });('theme', current);
-      });
+  <button class="back-to-top" type="button" aria-label="Back to top">↑</button>
 
-      window.addEventListener('scroll', () => {
-        if (!backToTop) return;
-        if (window.scrollY > 200) {
-          backToTop.classList.add('visible');
-        } else {
-          backToTop.classList.remove('visible');
-        }
-      });
+  <script>
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-      if (backToTop) {
-        backToTop.addEventListener('click', () => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-      }
-    </script>
-  </body>
-</html>
+    const backToTop = document.querySelector('.
