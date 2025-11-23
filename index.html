@@ -1,242 +1,321 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Doeun Kim</title>
-    <meta name="description" content="Doeun Kim — Data scientist exploring Security & Privacy, HCI, and STS." />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Doeun Kim</title>
+    <meta name="description" content="Doeun Kim — Data scientist exploring Security & Privacy, HCI, and STS." />
 
-    <style>
-      :root {
-        /* DEFAULT = LIGHT THEME */
-        --bg: #ffffff;
-        --fg: #111111;
-        --muted: #555555;
-        --accent: #000000;
-        --border: #dddddd;
-        --link: #000000;
-        --card: #ffffff;
-      }
+    <style>
+      :root {
+        /* DEFAULT = LIGHT THEME */
+        --bg: #ffffff;
+        --fg: #111111;
+        --muted: #555555;
+        --accent: #000000;
+        --border: #dddddd;
+        --link: #000000;
+        --card: #ffffff;
+      }
 
-      :root.dark {
-        --bg: #0b0c0f;
-        --fg: #e5e7eb;
-        --muted: #9ca3af;
-        --accent: #ffffff;
-        --border: #1f2937;
-        --link: #ffffff;
-        --card: #050608;
-      }
+      :root.dark {
+        --bg: #0b0c0f;
+        --fg: #e5e7eb;
+        --muted: #9ca3af;
+        --accent: #ffffff;
+        --border: #1f2937;
+        --link: #ffffff;
+        --card: #050608;
+      }
 
-      * { box-sizing: border-box; }
+      * { box-sizing: border-box; }
 
-      body {
-        margin: 0;
-        font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background: var(--bg);
-        color: var(--fg);
-      }
+      body {
+        margin: 0;
+        font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+      }
 
-      .container {
-        max-width: 760px;
-        margin: 0 auto;
-        padding: 80px 20px 60px;
-      }
+      .container {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 80px 20px 60px;
+      }
 
-      .site-header {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        backdrop-filter: blur(6px);
-        background: color-mix(in oklab, var(--bg) 85%, transparent);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 32px;
-        padding: 12px 0;
-      }
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(6px);
+        background: color-mix(in oklab, var(--bg) 85%, transparent);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 32px;
+        padding: 12px 0;
+      }
 
-      .nav-title {
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        font-size: 14px;
-        color: var(--muted);
-      }
+      .nav-title {
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 14px;
+        color: var(--muted);
+      }
 
-      .site-nav {
-        display: flex;
-        gap: 16px;
-        align-items: center;
-      }
+      .site-nav {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
 
-      .site-nav a {
-        font-size: 14px;
-        color: var(--muted);
-        text-decoration: none;
-      }
+      .site-nav a {
+        font-size: 14px;
+        color: var(--muted);
+        text-decoration: none;
+      }
 
-      .site-nav a:hover {
-        color: var(--link);
-      }
+      .site-nav a:hover {
+        color: var(--link);
+      }
 
-      .theme-toggle {
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        background: var(--card);
-        color: var(--fg);
-        border: 1px solid var(--border);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 14px;
-      }
+      .theme-toggle {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--card);
+        color: var(--fg);
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background 0.3s, color 0.3s; /* 트랜지션 추가 */
+      }
+      
+      /* dark 모드일 때 토글 버튼 아이콘 변경 (선택적) */
+      :root.dark .theme-toggle {
+        content: "☀️"; /* 자바스크립트에서 처리할 예정이므로 CSS에서는 주석 처리하거나 생략 가능 */
+      }
 
-      h1 {
-        font-size: clamp(36px, 6vw, 56px);
-        margin: 0 0 12px;
-        letter-spacing: -0.02em;
-        color: var(--accent);
-      }
 
-      p {
-        margin: 0 0 16px;
-        color: var(--muted);
-      }
+      h1 {
+        font-size: clamp(36px, 6vw, 56px);
+        margin: 0 0 12px;
+        letter-spacing: -0.02em;
+        color: var(--accent);
+      }
 
-      .photo {
-        display: block;
-        width: 160px;
-        height: 160px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin: 0 auto 28px;
-        border: 2px solid var(--border);
-      }
+      p {
+        margin: 0 0 16px;
+        color: var(--muted);
+      }
 
-      .section { margin-top: 52px; }
+      .photo {
+        display: block;
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 28px;
+        border: 2px solid var(--border);
+      }
 
-      h2 {
-        font-size: 18px;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--accent);
-        margin-bottom: 12px;
-      }
+      .section { margin-top: 52px; }
 
-      h3 {
-        font-size: 15px;
-        margin: 18px 0 6px;
-        color: var(--fg);
-      }
+      h2 {
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+        margin-bottom: 12px;
+      }
 
-      ul { list-style: none; padding: 0; margin: 0; }
-      li + li { margin-top: 10px; }
+      h3 {
+        font-size: 15px;
+        margin: 18px 0 6px;
+        color: var(--fg);
+      }
 
-      .cv-item-title { font-weight: 600; color: var(--fg); }
-      .cv-meta { font-size: 14px; color: var(--muted); }
+      ul { list-style: none; padding: 0; margin: 0; }
+      li + li { margin-top: 10px; }
 
-      .gallery {
-        margin-top: 10px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 12px;
-      }
+      .cv-item-title { font-weight: 600; color: var(--fg); }
+      .cv-meta { font-size: 14px; color: var(--muted); }
 
-      .gallery img {
-        width: 100%;
-        aspect-ratio: 4/3;
-        object-fit: cover;
-        border-radius: 10px;
-        border: 1px solid var(--border);
-      }
+      .gallery {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
+      }
 
-      .cv-embed {
-        width: 100%;
-        height: 900px;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        background: var(--card);
-      }
+      .gallery img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+      }
 
-      .back-to-top {
-        position: fixed;
-        right: 24px;
-        bottom: 24px;
-        width: 40px;
-        height: 40px;
-        border-radius: 999px;
-        border: 1px solid var(--border);
-        background: var(--card);
-        color: var(--fg);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 18px;
-      }
+      .cv-embed {
+        width: 100%;
+        height: 900px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--card);
+      }
 
-      .back-to-top.visible { display: flex; }
+      .back-to-top {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        width: 40px;
+        height: 40px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: var(--fg);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 18px;
+      }
 
-      footer {
-        margin-top: 80px;
-        text-align: center;
-        color: var(--muted);
-        font-size: 14px;
-      }
-    </style>
-  </head>
+      .back-to-top.visible { display: flex; }
+
+      footer {
+        margin-top: 80px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+      }
+    </style>
+  </head>
 <body>
-  <div class="container">
+  <div class="container">
 
-    <header class="site-header">
-      <div class="nav-title">DOEUN KIM</div>
-      <nav class="site-nav" aria-label="Main navigation">
-        <a href="#bio">Biography</a>
-        <a href="#cv">CV</a>
-        <a href="#hobbies">Hobbies</a>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
-      </nav>
-    </header>
+    <header class="site-header">
+      <div class="nav-title">DOEUN KIM</div>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#bio">Biography</a>
+        <a href="#cv">CV</a>
+        <a href="#hobbies">Hobbies</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+      </nav>
+    </header>
 
-    <img src="photo.jpg" alt="Portrait of Doeun Kim" class="photo" />
-    <h1>Doeun Kim</h1>
-    <p>Data scientist interested in <strong>Security &amp; Privacy</strong>, <strong>Human–Computer Interaction</strong>, and <strong>Science &amp; Technology Studies</strong>.</p>
-    <p>I build and study trustworthy online-safety pipelines under privacy constraints.</p>
+    <img src="photo.jpg" alt="Portrait of Doeun Kim" class="photo" />
+    <h1>Doeun Kim</h1>
+    <p>Data scientist interested in <strong>Security &amp; Privacy</strong>, <strong>Human–Computer Interaction</strong>, and <strong>Science &amp; Technology Studies</strong>.</p>
+    <p>I build and study trustworthy online-safety pipelines under privacy constraints.</p>
 
-    <div class="section" id="bio">
-      <h2>Biography</h2>
-      <p>안녕하세요! 저는 대규모 추천 시스템과 사용자 행동 데이터를 바탕으로 제품을 개선해 온 데이터 사이언티스트입니다. 최근에는 <em>프라이버시 제약 환경에서도 신뢰성 있게 작동하는 온라인 안전성 분석</em>에 관심을 갖고, S&amp;P/HCI/STS 교차 영역의 연구를 준비하고 있습니다.</p>
-    </div>
+    <div class="section" id="bio">
+      <h2>Biography</h2>
+      <p>안녕하세요! 저는 대규모 추천 시스템과 사용자 행동 데이터를 바탕으로 제품을 개선해 온 데이터 사이언티스트입니다. 최근에는 <em>프라이버시 제약 환경에서도 신뢰성 있게 작동하는 온라인 안전성 분석</em>에 관심을 갖고, S&amp;P/HCI/STS 교차 영역의 연구를 준비하고 있습니다.</p>
+    </div>
 
-    <div class="section" id="cv">
-      <h2>CV</h2>
-      <p style="margin-bottom: 12px;">You can view my full CV below. For best quality, open it in a new tab using your browser's PDF controls.</p>
-      <object data="cv.pdf#view=FitH" type="application/pdf" class="cv-embed">
-        <p>PDF preview is not available. <a href="cv.pdf">Download CV</a>.</p>
-      </object>
-    </div>
+    <div class="section" id="cv">
+      <h2>CV</h2>
+      <p style="margin-bottom: 12px;">You can view my full CV below. For best quality, open it in a new tab using your browser's PDF controls.</p>
+      <object data="cv.pdf#view=FitH" type="application/pdf" class="cv-embed">
+        <p>PDF preview is not available. <a href="cv.pdf">Download CV</a>.</p>
+      </object>
+    </div>
 
-    <div class="section" id="hobbies">
-      <h2>Hobbies</h2>
-      <p>In my free time, I enjoy baking, visiting cafés, and exploring quiet walking paths.</p>
-      <div class="gallery">
-        <img src="hobbies/bread.jpg" alt="Loaf of naturally fermented bread" />
-        <img src="hobbies/cafe.jpg" alt="Cozy cafe interior" />
-        <img src="hobbies/walk.jpg" alt="Favorite walking path" />
-      </div>
-    </div>
+    <div class="section" id="hobbies">
+      <h2>Hobbies</h2>
+      <p>In my free time, I enjoy baking, visiting cafés, and exploring quiet walking paths.</p>
+      <div class="gallery">
+        <img src="hobbies/bread.jpg" alt="Loaf of naturally fermented bread" />
+        <img src="hobbies/cafe.jpg" alt="Cozy cafe interior" />
+        <img src="hobbies/walk.jpg" alt="Favorite walking path" />
+      </div>
+    </div>
 
-    <footer>
-      © <span id="year"></span> Doeun Kim · Built with HTML &amp; CSS · <a href="https://github.com/yourname/yourname.github.io" target="_blank">GitHub</a>
-    </footer>
-  </div>
+    <footer>
+      © <span id="year"></span> Doeun Kim · Built with HTML &amp; CSS · <a href="https://github.com/yourname/yourname.github.io" target="_blank">GitHub</a>
+    </footer>
+  </div>
 
-  <button class="back-to-top" type="button" aria-label="Back to top">↑</button>
+  <button class="back-to-top" type="button" aria-label="Back to top">↑</button>
 
-  <script>
-    const yearEl = document.getElementById('year');
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  <script>
+    // 현재 연도 설정
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    const backToTop = document.querySelector('.
+    // 테마 토글 버튼 로직
+    const toggleButton = document.getElementById('theme-toggle');
+    const root = document.documentElement; // <html> 태그, 즉 :root를 가리킴
+    const storageKey = 'theme-preference';
+    const darkThemeClass = 'dark';
+    const lightModeIcon = '🌙';
+    const darkModeIcon = '☀️';
+
+    // 1. 테마 설정 함수
+    const setPreference = (theme) => {
+        // 로컬 저장소에 저장
+        localStorage.setItem(storageKey, theme);
+        
+        // <html> 태그에 클래스 적용
+        if (theme === 'dark') {
+            root.classList.add(darkThemeClass);
+            toggleButton.textContent = darkModeIcon;
+            toggleButton.setAttribute('aria-label', 'Toggle light theme');
+        } else {
+            root.classList.remove(darkThemeClass);
+            toggleButton.textContent = lightModeIcon;
+            toggleButton.setAttribute('aria-label', 'Toggle dark theme');
+        }
+    }
+
+    // 2. 초기 테마 불러오기/설정
+    const getPreferredTheme = () => {
+        const storedTheme = localStorage.getItem(storageKey);
+        if (storedTheme) {
+            return storedTheme;
+        }
+        // 저장된 테마가 없으면, 시스템 설정을 따름
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // 페이지 로드 시 초기 테마 설정
+    setPreference(getPreferredTheme());
+
+    // 3. 토글 이벤트 리스너 추가
+    toggleButton.addEventListener('click', () => {
+        let currentTheme = root.classList.contains(darkThemeClass) ? 'dark' : 'light';
+        let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setPreference(newTheme);
+    });
+
+    // Back-to-Top 버튼 로직
+    const backToTop = document.querySelector('.back-to-top');
+    
+    const toggleBackToTopButton = () => {
+        if (window.scrollY > 300) { // 300px 이상 스크롤 시 보이도록 설정
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    };
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
+    // 스크롤 이벤트 리스너
+    window.addEventListener('scroll', toggleBackToTopButton);
+
+    // 버튼 클릭 이벤트 리스너
+    backToTop.addEventListener('click', scrollToTop);
+    
+  </script>
+</body>
+</html>
