@@ -1,287 +1,136 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>RaeEun Lee</title>
-    <meta name="description" content="RaeEun Lee — Data scientist exploring Security & Privacy, HCI, and STS." />
-
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RaeEun Lee | Researcher Profile</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      :root {
-        /* DEFAULT = LIGHT THEME */
-        --bg: #ffffff;
-        --fg: #111111;
-        --muted: #555555;
-        --accent: #000000;
-        --border: #dddddd;
-        --link: #000000;
-        --card: #ffffff;
-      }
-      * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        color: var(--fg);
-        background: var(--bg);
-      }
-      .container {
-        max-width: 760px;
-        margin: 0 auto;
-        padding: 80px 20px 60px;
-      }
-      h1 {
-        font-size: clamp(36px, 6vw, 56px);
-        margin: 0 0 12px;
-        letter-spacing: -0.02em;
-        color: var(--accent);
-      }
-      p {
-        margin: 0 0 16px;
-        color: var(--muted);
-      }
-      a {
-        color: var(--link);
-        text-decoration: none;
-        border-bottom: 1px solid transparent;
-      }
-      a:hover {
-        border-bottom-color: var(--link);
-      }
-      .photo {
-        display: block;
-        width: 160px;
-        height: 160px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin: 0 auto 28px;
-        border: 2px solid var(--border);
-      }
-      .section {
-        margin-top: 52px;
-      }
-      h2 {
-        font-size: 18px;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--accent);
-        margin: 0 0 12px;
-      }
-      h3 {
-        font-size: 15px;
-        margin: 18px 0 6px;
-        color: var(--fg);
-      }
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-      li + li {
-        margin-top: 10px;
-      }
-      .cv-item-title {
-        font-weight: 600;
-        color: var(--fg);
-      }
-      .cv-meta {
-        font-size: 14px;
-        color: var(--muted);
-      }
-      .gallery {
-        margin-top: 10px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 12px;
-      }
-      .gallery img {
-        width: 100%;
-        aspect-ratio: 4/3;
-        object-fit: cover;
-        border-radius: 10px;
-        border: 1px solid var(--border);
-      }
-      .site-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 32px;
-        font-size: 14px;
-        color: var(--muted);
-      }
-      .nav-title {
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-      .site-nav {
-        display: flex;
-        gap: 16px;
-      }
-      .site-nav a {
-        border-bottom: none;
-        font-size: 14px;
-        color: var(--muted);
-      }
-      .site-nav a:hover {
-        color: var(--link);
-      }
-      .back-to-top {
-        position: fixed;
-        right: 24px;
-        bottom: 24px;
-        width: 40px;
-        height: 40px;
-        border-radius: 999px;
-        border: 1px solid var(--border);
-        background: #050608;
-        color: var(--fg);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 18px;
-      }
-      .back-to-top.visible {
-        display: flex;
-      }
-      .cv-embed {
-        width: 100%;
-        height: 900px;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        background: #050608;
-      }
-      footer {
-        margin-top: 80px;
-        text-align: center;
-        color: var(--muted);
-        font-size: 14px;
-      }
-          .theme-toggle {
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        background: var(--card);
-        color: var(--fg);
-        border: 1px solid var(--border);
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 14px;
-        padding: 0;
-      }
-
-      .theme-toggle:hover {
-        opacity: 0.85;
-      }
-
-      :root.dark {
-        --bg: #0b0c0f;
-        --fg: #e5e7eb;
-        --muted: #9ca3af;
-        --accent: #ffffff;
-        --border: #1f2937;
-        --link: #ffffff;
-        --card: #050608;
-      }
-
-      :root.dark body {
-        background: var(--bg);
-        color: var(--fg);
-      }
-</style>
-  </head>
-  <body>
-    <div class="container">
-      <header class="site-header">
-        <div class="nav-title">DOEUN KIM</div>
-        <nav class="site-nav" aria-label="Main navigation">
-          <a href="#bio">Biography</a>
-          <a href="#cv">CV</a>
-          <a href="#hobbies">Hobbies</a>
-          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">◐</button>
-        </nav>
-      </header>
-
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">◐</button>
-      <img src="photo.jpg" alt="Portrait of Doeun Kim" class="photo" />
-      <h1>Doeun Kim</h1>
-      <p>Data scientist interested in <strong>Security &amp; Privacy</strong>, <strong>Human–Computer Interaction</strong>, and <strong>Science &amp; Technology Studies</strong>.</p>
-      <p>I build and study trustworthy online-safety pipelines under privacy constraints.</p>
-
-      <div class="section" id="bio">
-        <h2>Biography</h2>
-        <p>안녕하세요! 저는 대규모 추천 시스템과 사용자 행동 데이터를 바탕으로 제품을 개선해 온 데이터 사이언티스트입니다. 최근에는 <em>프라이버시 제약 환경에서도 신뢰성 있게 작동하는 온라인 안전성 분석</em>에 관심을 갖고, S&amp;P/HCI/STS 교차 영역의 연구를 준비하고 있습니다.</p>
-      </div>
-
-      <div class="section" id="cv">
-        <h2>CV</h2>
-        <p style="margin-bottom: 12px;">You can view my full CV below. For best quality, open it in a new tab using your browser's PDF controls.</p>
-        <object data="cv.pdf#view=FitH" type="application/pdf" class="cv-embed">
-          <p>PDF preview is not available in this browser. You can <a href="cv.pdf">download the CV here</a>.</p>
-        </object>
-      </div>
-
-      <div class="section" id="hobbies">
-        <h2>Hobbies</h2>
-        <p>In my free time, I enjoy baking, visiting cafés, and exploring quiet walking paths.</p>
-        <div class="gallery">
-          <img src="hobbies/bread.jpg" alt="Loaf of naturally fermented bread on a wooden table" />
-          <img src="hobbies/cafe.jpg" alt="Cozy café interior with a cup of coffee" />
-          <img src="hobbies/walk.jpg" alt="Tree-lined path I like to walk on" />
-        </div>
-      </div>
-
-        <h2>Hobbies</h2>
-        <p>In my free time, I enjoy baking, visiting cafés, and exploring quiet walking paths.</p>
-        <div class="gallery">
-          <img src="hobbies/bread.jpg" alt="Loaf of naturally fermented bread on a wooden table" />
-          <img src="hobbies/cafe.jpg" alt="Cozy café interior with a cup of coffee" />
-          <img src="hobbies/walk.jpg" alt="Tree-lined path I like to walk on" />
-        </div>
-      </div>
-
-      <footer>
-        © <span id="year"></span> Doeun Kim · Built with HTML &amp; CSS · <a href="https://github.com/yourname/yourname.github.io" target="_blank">GitHub</a>
-      </footer>
-    </div>
-
-    <button class="back-to-top" type="button" aria-label="Back to top">↑</button>
-
-    <script>
-      const yearEl = document.getElementById('year');
-      if (yearEl) {
-        yearEl.textContent = new Date().getFullYear();
-      }
-
-      const backToTop = document.querySelector('.back-to-top');
-      // Theme toggle
-      const root = document.documentElement;
-      const themeToggle = document.getElementById('theme-toggle');
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') root.classList.add('dark');
-
-      themeToggle.addEventListener('click', () => {
-        root.classList.toggle('dark');
-        const current = root.classList.contains('dark') ? 'dark' : 'light';
-        localStorage.setItem('theme', current);
-      });('theme', current);
-      });
-
-      window.addEventListener('scroll', () => {
-        if (!backToTop) return;
-        if (window.scrollY > 200) {
-          backToTop.classList.add('visible');
-        } else {
-          backToTop.classList.remove('visible');
+        /* Inter 폰트 설정 */
+        :root {
+            font-family: 'Inter', sans-serif;
         }
-      });
+        /* 최대 너비를 설정하여 가독성 확보 */
+        .container {
+            max-width: 800px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen p-4 sm:p-8">
+    <!-- Main Content Container -->
+    <div class="container mx-auto bg-white p-6 sm:p-10 rounded-xl shadow-2xl">
 
-      if (backToTop) {
-        backToTop.addEventListener('click', () => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-      }
-    </script>
-  </body>
+        <!-- Header Section with Circular Profile Picture -->
+        <header class="flex flex-col sm:flex-row items-center sm:items-start space-y-6 sm:space-y-0 sm:space-x-10 mb-10 pb-6 border-b border-gray-100">
+            
+            <!-- Circular Profile Picture -->
+            <!-- 실제 프로필 사진 URL로 변경해 주세요. (로컬 경로 가능) -->
+            <img 
+                src="./images/raeeun.jpg" 
+                alt="RaeEun Lee Profile Picture" 
+                class="w-32 h-32 rounded-full object-cover shadow-xl border-4 border-white ring-4 ring-indigo-300 transition duration-500 hover:ring-indigo-500 hover:scale-105"
+            >
+
+            <!-- Name and Tagline -->
+            <div>
+                <h1 class="text-4xl font-extrabold text-indigo-900 border-b-2 border-indigo-100 pb-2 mb-2">RaeEun Lee</h1>
+                <div class="text-lg font-medium text-gray-700">Integrating technical expertise with critical social inquiry to build responsible algorithmic systems.</div>
+            </div>
+        </header>
+
+        <!-- Contact Section -->
+        <section class="mb-8 p-4 bg-indigo-50 rounded-lg">
+            <h2 class="text-xl font-bold text-indigo-700 mb-3">Contact</h2>
+            <div class="grid sm:grid-cols-2 gap-2 text-gray-700">
+                <p><strong>Email:</strong> <a href="mailto:to.rae.lee@gmail.com" class="text-indigo-600 hover:underline">to.rae.lee@gmail.com</a></p>
+                <p><strong>Phone:</strong> (+82)10-8288-0788</p>
+            </div>
+        </section>
+
+        <!-- Research Focus -->
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-indigo-700 mb-4 pb-2 border-b border-indigo-200">Research Focus</h2>
+            <p class="text-gray-700 mb-6">My academic and professional journey is driven by a core question: <strong> How can we detect, measure, and mitigate technical harms arising from large-scale algorithmic systems?</strong></p>
+
+            <div class="research-agenda">
+                <p class="font-semibold text-gray-800 mb-3">My research agenda integrates the following interdisciplinary approaches:</p>
+                <ol class="list-decimal list-inside space-y-2 pl-4 text-gray-700">
+                    <li> Uncovering Sociotechnical Harms Not Recorded in Logs </li>
+                    <li> Designing Value-Aware Metrics Implementable in Systems </li>
+                    <li> Building Robust and Healthy Systems through Multi-layered Harm Detection </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Publications & Public Engagement -->
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-indigo-700 mb-4 pb-2 border-b border-indigo-200">Publications & Public Engagement</h2>
+
+            <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Educational Book</h3>
+            <p class="text-gray-700 mb-3">I was approached by a major trade press in Korea to author the educational book for teenagers, <strong><em>If We Could Change the World with Coding</em></strong>. This project reflects my commitment to public outreach by clearly articulating the necessity of <strong>digital literacy</strong> and <strong>civic-minded coding</strong>.</p>
+            <ul class="list-disc list-inside space-y-1 pl-4 text-indigo-600">
+                <li> <a href="http://aladin.kr/p/kP2Xp" target="_blank" class="hover:underline">Book Link (Aladin)</a></li>
+                <li> <a href="https://product.kyobobook.co.kr/detail/S000202740600" target="_blank" class="hover:underline">Book Link (Kyobo)</a></li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Civic Engagement</h3>
+            <p class="text-gray-700">My commitment to building a healthier society is reinforced by my work as an operations team member and spokesperson for <strong>BIYN</strong>. <a href="https://newsbikr.wordpress.com/biyn-%ec%86%8c%ea%b0%9c/" target="_blank" class="text-indigo-600 hover:underline">Learn more about BIYN.</a></p>
+        </section>
+
+        <!-- CV Section -->
+        <section class="mb-10 p-4 bg-gray-100 rounded-lg shadow-inner">
+            <h2 class="text-2xl font-bold text-indigo-700 mb-3">Curriculum Vitae (CV)</h2>
+            <p class="text-gray-700 mb-4">A detailed overview of my education, technical skills, and work history is available here:</p>
+            <p>
+                <a href="./cv.pdf" target="_blank" class="inline-block px-4 py-2 bg-indigo-600 text-white font-bold rounded-full shadow-md hover:bg-indigo-700 transition duration-300">
+                    Download Full CV (PDF)
+                </a>
+            </p>
+        </section>
+
+        <!-- Hobbies Section -->
+        <section id="hobbies" class="mt-12 pt-8 border-t-4 border-indigo-100">
+            <h2 class="text-2xl font-bold text-indigo-700 mb-4 pb-2">Hobbies</h2>
+            
+            <!-- 'Hobbies:' 레이블을 제거하여 한 번만 표시되도록 수정했습니다. -->
+            <p class="text-lg mb-6 font-semibold text-gray-800">
+                ⚽ Soccer, 🍳 Cooking, 🧩 Puzzles
+            </p>
+
+            <!-- Hobby Images Grid (4 images) -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <img 
+                    src="./images/image1.jpg" 
+                    alt="Soccer Image" 
+                    class="w-full h-32 object-cover rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-indigo-400"
+                >
+                
+                <img 
+                    src="./images/image2.jpg" 
+                    alt="Cooking Image 1" 
+                    class="w-full h-32 object-cover rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-indigo-400"
+                >
+
+                <img 
+                    src="./images/image3.jpg" 
+                    alt="Cooking Image 2" 
+                    class="w-full h-32 object-cover rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-indigo-400"
+                >
+                
+                <img 
+                    src="./images/image4.jpg" 
+                    alt="Puzzle Image" 
+                    class="w-full h-32 object-cover rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-indigo-400"
+                >
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-12 pt-6 border-t border-gray-200 text-center text-sm text-gray-500">
+            &copy; 2025 RaeEun Lee. All rights reserved.
+        </footer>
+
+    </div>
+</body>
 </html>
